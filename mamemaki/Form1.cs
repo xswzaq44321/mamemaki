@@ -85,7 +85,7 @@ namespace mamemaki
 				{
 					if (map[i, j])
 					{
-						vmap.points.Add(new VoronoiStruct.Point(i, j));
+						vmap.polygons.Add(new VoronoiStruct.Polygon(new VoronoiStruct.Point(i, j)));
 					}
 				}
 			}
@@ -111,9 +111,9 @@ namespace mamemaki
 				return;
 			}
 			map = new bool[vmap.width, vmap.height];
-			foreach (var item in vmap.points)
+			foreach (var item in vmap.polygons)
 			{
-				map[item.x, item.y] = true;
+				map[item.focus.x, item.focus.y] = true;
 			}
 			drawMap(map);
 		}
@@ -134,9 +134,9 @@ namespace mamemaki
 					return;
 				}
 				map = new bool[vmap.width, vmap.height];
-				foreach (var item in vmap.points)
+				foreach (var item in vmap.polygons)
 				{
-					map[item.x, item.y] = true;
+					map[item.focus.x, item.focus.y] = true;
 				}
 				drawMap(map);
 			}
