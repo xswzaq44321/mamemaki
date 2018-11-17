@@ -66,7 +66,7 @@ namespace mamemaki
 				{
 					if (map[i, j])
 					{
-						g.FillEllipse(blueBrush, i, j, circleSize.Width, circleSize.Height);
+						g.FillEllipse(blueBrush, i - circleSize.Width / 2, j - circleSize.Height / 2, circleSize.Width, circleSize.Height);
 					}
 				}
 			}
@@ -147,7 +147,7 @@ namespace mamemaki
 			if(saveFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				makeVoronoi(map, ref vmap);
-				string json = JsonConvert.SerializeObject(vmap);
+				string json = JsonConvert.SerializeObject(vmap, Formatting.Indented);
 				System.IO.File.WriteAllText(saveFileDialog1.FileName, json);
 			}
 		}

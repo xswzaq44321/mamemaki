@@ -147,7 +147,7 @@
 			this.numericUpDown_count.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.numericUpDown_count.Location = new System.Drawing.Point(633, 111);
 			this.numericUpDown_count.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
@@ -210,7 +210,7 @@
 			this.numericUpDown_width.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.numericUpDown_width.Location = new System.Drawing.Point(633, 51);
 			this.numericUpDown_width.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
@@ -234,7 +234,7 @@
 			this.numericUpDown_height.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.numericUpDown_height.Location = new System.Drawing.Point(693, 51);
 			this.numericUpDown_height.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
