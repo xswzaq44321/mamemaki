@@ -75,6 +75,7 @@ namespace mamemaki
 
 		void makeVoronoi(bool[,] map, ref VoronoiStruct.Voronoi vmap)
 		{
+			vmap = new VoronoiStruct.Voronoi();
 			int m = map.GetLength(0);
 			int n = map.GetLength(1);
 			vmap.width = m;
