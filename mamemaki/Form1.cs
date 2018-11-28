@@ -21,14 +21,15 @@ namespace mamemaki
 			circleSize = new Size(3, 3);
 			bmp = new Bitmap(1, 1);
 			g = Graphics.FromImage(bmp);
-			width = (int)numericUpDown_width.Value;
-			height = (int)numericUpDown_height.Value;
-			pointCount = (int)numericUpDown_count.Value;
-			pointMargin = (int)numericUpDown_margin.Value;
+			numericUpDown_width_ValueChanged(null, null);
+			numericUpDown_height_ValueChanged(null, null);
+			numericUpDown_count_ValueChanged(null, null);
+			numericUpDown_margin_ValueChanged(null, null);
+			numericUpDown_border_ValueChanged(null, null);
 			map = new bool[1, 1];
 		}
 
-		int width, height, pointCount, pointMargin;
+		int width, height, pointCount, pointMargin, mapBorder;
 		VoronoiStruct.Voronoi vmap;
 		Brush blueBrush;
 		Size circleSize;
@@ -39,8 +40,10 @@ namespace mamemaki
 
 		bool checkPointValid(bool[,] map, int a, int b)
 		{
-			int m = map.GetLength(0);
-			int n = map.GetLength(1);
+			int n = map.GetLength(0);
+			int m = map.GetLength(1);
+			if (a < mapBorder || b < mapBorder || a > m - mapBorder || b > n - mapBorder)
+				return false;
 			for (int i = a - pointMargin; i <= a + pointMargin; ++i)
 			{
 				for (int j = b - pointMargin; j <= b + pointMargin; ++j)
@@ -60,9 +63,9 @@ namespace mamemaki
 			g = Graphics.FromImage(bmp);
 			pictureBox1.Image = bmp;
 
-			for (int i = 0; i < map.GetLength(0); ++i)
+			for (int i = 0; i < map.GetLength(1); ++i)
 			{
-				for (int j = 0; j < map.GetLength(1); ++j)
+				for (int j = 0; j < map.GetLength(0); ++j)
 				{
 					if (map[i, j])
 					{
@@ -76,10 +79,10 @@ namespace mamemaki
 		void makeVoronoi(bool[,] map, ref VoronoiStruct.Voronoi vmap)
 		{
 			vmap = new VoronoiStruct.Voronoi();
-			int m = map.GetLength(0);
-			int n = map.GetLength(1);
-			vmap.width = m;
-			vmap.height = n;
+			int n = map.GetLength(0);
+			int m = map.GetLength(1);
+			vmap.width = n;
+			vmap.height = m;
 			for (int i = 0; i < m; ++i)
 			{
 				for (int j = 0; j < n; ++j)
@@ -166,6 +169,11 @@ namespace mamemaki
 		private void numericUpDown_width_ValueChanged(object sender, EventArgs e)
 		{
 			width = (int)numericUpDown_width.Value;
+		}
+
+		private void numericUpDown_border_ValueChanged(object sender, EventArgs e)
+		{
+			mapBorder = (int)numericUpDown_border.Value;
 		}
 
 		private void numericUpDown_size_ValueChanged(object sender, EventArgs e)
